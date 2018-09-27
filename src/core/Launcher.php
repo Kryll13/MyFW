@@ -6,10 +6,8 @@ use \Illuminate\Database\Capsule\Manager as Capsule;
 
 class Launcher
 {
-
     public static function run(Request $r)
     {
-
         // démarage de l'ORM Eloquent
         $capsule = new Capsule;
         $capsule->addConnection(array(
@@ -25,13 +23,11 @@ class Launcher
         $capsule->bootEloquent();
 
         if ($r->getController() == 'rest') {
-
             if (class_exists('\MyFW\App\Controller' . ucfirst($r->getController()) . ucfirst($r->getAction()))) {
                 $controllerName = '\MyFW\App\Controller' . ucfirst($r->getController()) . ucfirst($r->getAction());
                 // instanciation du contrôleur .$r->getAction()
                 // Request en paramètre
                 $controller = new $controllerName($r);
-
                 if (method_exists($controller, 'defaut')) {
                     if (isset($r->getArguments()['uri'])) {
                         // avec paramètres
@@ -44,7 +40,6 @@ class Launcher
                     echo 'Action not present';
                 }
             }
-
         } else {
             if (class_exists('\MyFW\App\Controller' . ucfirst($r->getController()))) {
                 $controllerName = '\MyFW\App\Controller' . ucfirst($r->getController());
@@ -63,14 +58,9 @@ class Launcher
                 } else {
                     echo 'Action not present';
                 }
-                //
-                //echo '<hr>';
-                //print_r($app);
-
             } else {
                 echo 'Controller not present';
             }
         }
     }
-
 }
