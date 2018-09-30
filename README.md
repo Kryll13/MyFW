@@ -7,4 +7,4 @@ Développement d'un micro FrameWork en PHP.
 - MVC
 - Réécriture d'URL par Mod_Rewrite
 - Intégration de l'ORM Eloquent
-
+- Intégration du Template Engine TWIG
